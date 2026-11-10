@@ -1,0 +1,3 @@
+import mongoose from 'mongoose';
+const schema=new mongoose.Schema({ fullName:{type:String,required:true,trim:true,maxlength:120}, email:{type:String,required:true,unique:true,lowercase:true,trim:true,index:true}, phone:{type:String,trim:true,maxlength:30}, passwordHash:{type:String,required:true,select:false}, role:{type:String,enum:['citizen','admin','team'],default:'citizen',index:true}, mustChangePassword:{type:Boolean,default:false}, isActive:{type:Boolean,default:true}},{timestamps:true});
+schema.methods.safe=function(){return {id:this.id,fullName:this.fullName,email:this.email,phone:this.phone,role:this.role};}; export default mongoose.model('User',schema);

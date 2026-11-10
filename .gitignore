@@ -1,0 +1,104 @@
+# Shared root .gitignore for the frontend + backend monorepo.
+# Keep this file at the repository root, beside frontend/ and backend/.
+
+# -----------------------------------------------------------------------------
+# Environment files and secrets (applies at every directory depth)
+# -----------------------------------------------------------------------------
+.env
+.env.*
+**/.env
+**/.env.*
+!.env.example
+!**/.env.example
+
+# Private keys / local certificates / credential material
+*.key
+*.p12
+*.pfx
+*.jks
+
+# -----------------------------------------------------------------------------
+# Dependencies (frontend and backend)
+# -----------------------------------------------------------------------------
+**/node_modules/
+
+# -----------------------------------------------------------------------------
+# Build output, bundler output, and test coverage (at any depth)
+# -----------------------------------------------------------------------------
+**/dist/
+**/build/
+**/coverage/
+**/.vite/
+**/.turbo/
+**/.cache/
+**/.next/
+**/.nuxt/
+**/.output/
+
+# -----------------------------------------------------------------------------
+# Logs and debug output
+# -----------------------------------------------------------------------------
+**/*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# -----------------------------------------------------------------------------
+# Private backend uploads, incident evidence, and SOS media
+# These defaults cover paths relative to backend/. If UPLOAD_DIR or
+# SOS_MEDIA_DIR is configured elsewhere, add that actual private path here.
+# -----------------------------------------------------------------------------
+/backend/uploads/
+/backend/private-sos-media/
+/backend/storage/uploads/
+/backend/storage/private-sos-media/
+/backend/tmp/
+/backend/temp/
+
+# Common generated upload/media folders under backend (not frontend source assets)
+/backend/**/private-uploads/
+/backend/**/private-media/
+
+# -----------------------------------------------------------------------------
+# Local database files, dumps, and backups
+# -----------------------------------------------------------------------------
+**/*.sqlite
+**/*.sqlite3
+**/*.db
+**/*.dump
+**/*.bak
+
+# -----------------------------------------------------------------------------
+# Test artifacts and temporary files
+# -----------------------------------------------------------------------------
+**/.nyc_output/
+**/playwright-report/
+**/test-results/
+**/*.tmp
+**/*.temp
+
+# -----------------------------------------------------------------------------
+# Operating-system files
+# -----------------------------------------------------------------------------
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# -----------------------------------------------------------------------------
+# IDE / editor files
+# -----------------------------------------------------------------------------
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# -----------------------------------------------------------------------------
+# Optional local tooling state
+# -----------------------------------------------------------------------------
+.vercel/
+.netlify/

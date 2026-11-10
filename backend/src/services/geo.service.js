@@ -1,0 +1,3 @@
+import axios from 'axios'; import { env } from '../config/env.js'; import { ApiError } from '../utils/api.js';
+export async function geoSearch(text){if(!env.geoKey)throw new ApiError(503,'GEO_UNAVAILABLE','Geo service is not configured');const {data}=await axios.get(`${env.geoUrl}/geocode/search`,{params:{text,apiKey:env.geoKey,lang:'en',format:'json'},timeout:10000});return data.results||[];}
+export async function reverse(lat,lon){if(!env.geoKey)throw new ApiError(503,'GEO_UNAVAILABLE','Geo service is not configured');const {data}=await axios.get(`${env.geoUrl}/geocode/reverse`,{params:{lat,lon,apiKey:env.geoKey,format:'json'},timeout:10000});return data.results||[];}

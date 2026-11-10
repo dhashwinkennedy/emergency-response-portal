@@ -1,0 +1,2 @@
+import { describe,it,expect } from 'vitest'; import { validCoordinates,haversine } from '../src/utils/geo.js'; import { CATEGORIES } from '../src/constants/index.js';
+describe('core helpers',()=>{it('accepts valid GeoJSON coordinates',()=>expect(validCoordinates([80.2425,13.0569])).toBe(true));it('rejects invalid coordinates',()=>expect(validCoordinates([200,100])).toBe(false));it('calculates geographic distance',()=>expect(haversine([80,13],[80,13])).toBe(0));it('has configured categories',()=>expect(CATEGORIES).toContain('Fire Emergency'));});

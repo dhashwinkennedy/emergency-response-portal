@@ -1,0 +1,1 @@
+import IncidentHistory from '../models/IncidentHistory.js'; export const history=(incidentId,actorId,action,previousValue,newValue,reason)=>IncidentHistory.create({incidentId,actorId,action,previousValue,newValue,reason});
