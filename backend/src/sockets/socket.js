@@ -28,7 +28,7 @@ export function configureSockets(server) {
     next();
   });
 
-  io.on('connection', (socket) => {
+  io.on('connection', async (socket) => {
     if (socket.user.role === 'admin') socket.join('admin:dashboard');
     if (socket.user.role === 'team') socket.join(`team:${socket.user.id}`);
     if (socket.user.role === 'team') { const team=await ResponseTeam.findOne({userId:socket.user._id}).select('_id'); if(team) socket.join(`team:${team._id}`); }
